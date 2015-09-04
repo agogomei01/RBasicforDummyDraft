@@ -30,10 +30,13 @@
 - Class: text
   Output: "輸入文字 \"Taiwan\" 或是 數字 e.g. 1234, Consol不會出現錯誤訊號
           你輸入 Taiwan 會出現錯誤訊息,因為,城市語言誤判Taiwan為function的代號"
-  Hint: re-check;用Play() ”Taiwan”,1234,Taiwan的例子
+  Hint: 用Play() ”Taiwan”,1234,Taiwan的例子
   
 - Class: cmd_question
-  Output: "我們到 play() 來試打 ”Taiwan” ,  1234  , Taiwan  "
+  Output: 輸入skip() 進入下一階段
+  CorrectAnswer: '"I love R"'
+  AnswerTests: omnitest('"I love R"')
+  Hint: 輸入skip()
   
 - Class: text
   Output: '在 R 裡可以用 <- 或 = 指定值給變數。'
@@ -59,11 +62,12 @@
 - Class: cmd_question
   Output: "請判斷1>2 系統傳回答案為何?"
   CorrectAnswer: FALSE
+  AnswerTests: omnitest(correctVal=FALSE)
   Hint: 不知道答案,可以打play(),玩玩看結果如何
   
 - Class: text
   Output: 其他相關的比大小邏輯運算還包括諸如 > (大於), < (小於), >= (大於等於) 與 <= (小於等於)。
-n
+
 
 - Class: text
   Output: 回到我們的 101 大樓的例子 height_101= 509
@@ -72,12 +76,12 @@ n
   Output: "!(NOT)，可對邏輯值取負，或是表達不等於 (!=)，試試輸入 height_101 != 10 
   ，請問結果為何"
   CorrectAnswer: TRUE
+  AnswerTests: omnitest(correctVal='TRUE')
   
-  
--- Class: cmd_question
+- Class: cmd_question
   Output: "!(NOT)，可對邏輯值取負，或是表達不等於 (!=)，試試輸入 height_101 != 509 ，請問結果為何"
   CorrectAnswer: FALSE
-  
+  AnswerTests: omnitest(correctVal='FALSE')
 
 - Class: text
   Output: R 裡也有許多內建的運算符，例如 + (加法), - (減法), * (乘法) 與 / (除法) 。
@@ -85,7 +89,7 @@ n
 - Class: cmd_question
   Output: "2015+2016 會等於多少呢? "
   CorrectAnswer: 4031
-  
+  AnswerTests: omnitest(correctVal=4031)
 
 - Class: text
   Output: 邏輯值如果用於一般的運算，R 會把 TRUE 當成 1 ，FALSE 當成 0 。

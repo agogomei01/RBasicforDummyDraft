@@ -12,9 +12,12 @@ output: html_document
 *TXT 檔案
 read.table(x,header=TRUE/FALSE)
 
-*
+*CSV 檔案
+read.csv(x,header=TRUE/FALSE)
 
-
+*XLSX 檔案
+install.packages("xlsx")
+read.xls(x,header=TRUE/FALSE)
 
 ## 讀檔案
 
@@ -75,22 +78,27 @@ str(dta['教育'])
 
 ## 繪圖顯示（示範資料重新結構）
 
-```{r reshape and plot}
+```{r reshapeandplot}
+
+#製造平均數兩種寫法
+#很直覺，不過如果有遺漏值就麻煩了
+dta$功能 <-(dta$視力 + dta$聽力 + dta$移動 + dta$溝通)/4
+
 #將五個變數以兩個類別變項分組,取平均
-hlt <- aggregate(cbind(視力, 聽力, 移動, 溝通, 功能) ~ 性別 + 年齡,
-+ data = dta, mean)
+hlt <- aggregate(cbind(視力,聽力,移動,溝通,功能) ~性別+年齡,data = dta, mean)
 #把 hlth 的前兩欄命名
-names(hlt)[1:2] <- c('性別', '年齡')
+names(hlt)[1:2] <- c('性別','年齡')
 hlt
 #不同性別與年齡的健康功能圖
-with(hlt, dotchart(t(功能), group = 性別, labels = 年齡, xlab = '功能'))
+par(family='Heiti TC Light')
+with(hlt, dotchart(t(功能), group =性別, labels = 年齡, xlab = '功能'))
 ```
 
 # Homework
 
 有上過R Basic datastrucure 從資料源挑資料集做分析
 可以從 1.MASS
-       2.The Analystics Edge
+       2.Wush~~
        
 沒上過 Basic datastrucure 先練習
 [Introduction to R](https://www.datacamp.com/courses/free-introduction-to-r) (around 4 hours)
