@@ -9,15 +9,10 @@ output: html_document
 
 * read.table
 
+*TXT 檔案
 read.table(x,header=TRUE/FALSE)
 
-
-## 調整檔案位置
-
-setwd
-```{r setwd}
-setwd("~/Downloads/UTF/01")
-```
+*
 
 
 
